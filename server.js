@@ -23,7 +23,7 @@ io.on('connection', function (socket) {
 	});
 
 	socket.on('message', function(message) {
-		console.log('Message received: ' + message.text);
+		console.log('Message received in room ' + clientInfo[socket.id].room + ': ' + message.text);
 
 		message.timestamp = moment().valueOf();
 		io.to(clientInfo[socket.id].room).emit('message', message);
